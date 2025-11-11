@@ -1,7 +1,7 @@
 export default function Header() {
     return (
         <header>
-            <nav className="flex justify-between flex-col text-center md:flex-row m-auto gap-5">
+            <nav className="flex justify-between flex-col text-center md:flex-row gap-5">
                 <h2 className="text-white uppercase tracking-wide underline underline-offset-4 text-l font-bold">
                     Sourdis Raphaël
                 </h2>

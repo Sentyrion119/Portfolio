@@ -2,8 +2,8 @@ export default function aboutMe() {
     return (
         <section className="text-white justify-self-center w-2/3 mt-40 mb-30">
             <h3 className="text-center text-2xl font-semibold mb-10">Qui suis-je ?</h3>
-            <article className="flex items-center justify-center w-full gap-10">
-                <img src="/assets/SRS.png" alt="" className="w-50"/>
+            <article className="flex flex-col md:flex-row items-center justify-center w-full gap-10">
+                <img src="/assets/SRS.png" alt="" className="w-40 md:w-50 mx-auto"/>
                 <p>Bonjour, je m'appelle Raphaël Sourdis, développeur Full Stack attentif à la performance et à la
                     qualité
                     des applications web. Actuellement en Pré MS'c chez Epitech.
