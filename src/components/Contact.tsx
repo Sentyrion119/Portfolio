@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import {useState} from "react";
 
 export default function Contact() {
     const [copied, setCopied] = useState(false);
@@ -13,7 +13,7 @@ export default function Contact() {
     };
 
     return (
-        <footer className="bg-neutral-900 text-white py-12 text-center">
+        <footer className="bg-black text-white py-12 text-center">
             <h2 className="text-2xl font-bold mb-4">Vous souhaitez me contacter ?</h2>
             <p className="mb-6">Cliquez sur un des boutons ci-dessous :</p>
 
