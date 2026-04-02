@@ -1,43 +1,235 @@
+import { motion } from "framer-motion";
+import { type ReactNode } from "react";
+
+// --- SVG Icons ---
+
+const ReactIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#61DAFB">
+        <circle cx="12" cy="12" r="2.2" />
+        <g fill="none" stroke="#61DAFB" strokeWidth="1">
+            <ellipse cx="12" cy="12" rx="10" ry="4" />
+            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+        </g>
+    </svg>
+);
+
+const TypeScriptIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <rect width="24" height="24" rx="3" fill="#3178C6" />
+        <path d="M5.5 12.5h6v1.2h-2.3V19h-1.5v-5.3H5.5v-1.2zm6.8 0h1.5l.1 .7c.5-.6 1.2-.9 2-.9 1.5 0 2.3 1 2.3 2.7V19h-1.5v-3.7c0-1.1-.4-1.7-1.2-1.7-.9 0-1.5.7-1.5 1.8V19h-1.5v-6.5z" fill="white" />
+    </svg>
+);
+
+const VueIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path d="M2 3h3.5L12 14.5 18.5 3H24L12 24 0 3h2z" fill="#4FC08D" />
+        <path d="M7.5 3L12 10.5 16.5 3H22L12 20.5 2 3h5.5z" fill="#35495E" />
+    </svg>
+);
+
+const CSharpIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#68217A" />
+        <text x="12" y="16.5" textAnchor="middle" fontSize="11" fontWeight="bold" fill="white" fontFamily="Arial">C#</text>
+    </svg>
+);
+
+const DotNetIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#512BD4" />
+        <text x="12" y="16" textAnchor="middle" fontSize="7" fontWeight="bold" fill="white" fontFamily="Arial">.NET</text>
+    </svg>
+);
+
+const PHPIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <ellipse cx="12" cy="12" rx="11" ry="7" fill="#777BB4" />
+        <text x="12" y="14.5" textAnchor="middle" fontSize="7" fontWeight="bold" fill="white" fontFamily="Arial">php</text>
+    </svg>
+);
+
+const LaravelIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#FF2D20">
+        <path d="M23.642 5.43a.364.364 0 01.014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934c0 .135-.073.26-.189.327l-9.03 5.2a.32.32 0 01-.085.042l-.033.009a.37.37 0 01-.19 0l-.033-.009a.321.321 0 01-.085-.042l-9.03-5.2a.376.376 0 01-.189-.326V6.18c0-.046.005-.09.014-.133l.008-.03a.381.381 0 01.034-.077l.016-.027c.014-.02.03-.04.048-.057l.022-.02a.375.375 0 01.063-.046L5.1 3.27a.376.376 0 01.378 0l4.515 2.6a.375.375 0 01.189.327v9.578l3.764-2.17V8.506c0-.045.005-.09.014-.132l.008-.031a.371.371 0 01.034-.077l.016-.027c.014-.02.03-.04.048-.057l.022-.02a.372.372 0 01.063-.046l4.515-2.6a.376.376 0 01.378 0l4.515 2.6c.024.014.045.03.064.046z" />
+    </svg>
+);
+
+const JavaIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.762.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218" fill="#5382A1" />
+        <path d="M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0 0-8.216 2.051-4.292 6.573" fill="#E76F00" />
+        <path d="M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.569 2.082-1.006 3.776-.891 3.776-.891M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.356.075-.515.14-.515.14s.132-.207.385-.296c2.875-1.011 5.086 2.981-.928 4.562 0 0 .07-.062.09-.121" fill="#5382A1" />
+        <path d="M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.889 4.832 0 6.836-2.274-2.053-3.943-3.858-2.824-5.54 1.644-2.469 6.197-3.665 5.189-7.626" fill="#E76F00" />
+        <path d="M9.734 23.924c4.322.277 10.959-.154 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0 0 .553.457 3.393.639" fill="#5382A1" />
+    </svg>
+);
+
+const DockerIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#2496ED">
+        <path d="M13.983 11.078h2.119a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.119a.185.185 0 00-.185.185v1.888c0 .102.083.185.185.185m-2.954-5.43h2.118a.186.186 0 00.186-.186V3.574a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.186m0 2.716h2.118a.187.187 0 00.186-.186V6.29a.186.186 0 00-.186-.185h-2.118a.185.185 0 00-.185.185v1.887c0 .102.082.186.185.186m-2.93 0h2.12a.186.186 0 00.184-.186V6.29a.185.185 0 00-.185-.185H8.1a.185.185 0 00-.185.185v1.887c0 .102.083.186.185.186m-2.964 0h2.119a.186.186 0 00.185-.186V6.29a.186.186 0 00-.185-.185H5.136a.186.186 0 00-.186.185v1.887c0 .102.084.186.186.186m5.893 2.715h2.118a.186.186 0 00.186-.185V9.006a.186.186 0 00-.186-.186h-2.118a.185.185 0 00-.185.185v1.888c0 .102.082.185.185.185m-2.93 0h2.12a.185.185 0 00.184-.185V9.006a.185.185 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.083.185.185.185m-2.964 0h2.119a.185.185 0 00.185-.185V9.006a.186.186 0 00-.185-.186H5.136a.186.186 0 00-.186.186v1.887c0 .102.084.185.186.185m-2.92 0h2.12a.185.185 0 00.184-.185V9.006a.186.186 0 00-.184-.186h-2.12a.185.185 0 00-.184.185v1.888c0 .102.082.185.185.185M23.763 9.89c-.065-.051-.672-.51-1.954-.51-.338.001-.676.03-1.01.087-.248-1.7-1.653-2.53-1.716-2.566l-.344-.199-.226.327c-.284.438-.49.922-.612 1.43-.23.97-.09 1.882.403 2.661-.595.332-1.55.413-1.744.42H.751a.751.751 0 00-.75.748 11.687 11.687 0 00.692 4.062c.545 1.428 1.355 2.48 2.41 3.124 1.18.723 3.1 1.137 5.275 1.137.983.003 1.963-.086 2.93-.266a12.248 12.248 0 003.823-1.389c.98-.567 1.86-1.288 2.61-2.136 1.252-1.418 1.998-2.997 2.553-4.4h.221c1.372 0 2.215-.549 2.68-1.009.309-.293.55-.65.707-1.046l.098-.288Z" />
+    </svg>
+);
+
+const GitIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#F05032">
+        <path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.66 2.66c.643-.22 1.386-.076 1.9.438.721.72.721 1.884 0 2.604-.72.719-1.886.719-2.605 0-.538-.536-.672-1.318-.404-1.981l-2.481-2.48v6.529c.175.087.34.199.484.341.719.72.719 1.885 0 2.604-.72.719-1.886.719-2.604 0-.719-.719-.719-1.884 0-2.604.177-.178.383-.312.604-.402V8.964c-.221-.091-.425-.224-.604-.402-.545-.544-.676-1.338-.396-2.011L7.636 3.88.45 11.07c-.605.604-.605 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.186" />
+    </svg>
+);
+
+const LinuxIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#FCC624">
+        <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.368 1.884 1.368.199 0 .394-.048.581-.133.525-.249.786-.735.786-1.348 0-.199-.013-.4-.04-.6-.068-.328-.134-.643-.127-.958.008-.307.048-.598.126-.872.1-.342.127-.588.127-.883-.003-.2-.012-.394-.036-.6a3.58 3.58 0 00-.32-1.1c-.145-.28-.3-.537-.458-.767-.093-.136-.178-.27-.253-.39a6.723 6.723 0 01-.336-.72c-.106-.266-.164-.528-.164-.796 0-.263.058-.527.17-.79.113-.267.178-.55.219-.834.023-.16.008-.325-.032-.486-.04-.16-.08-.319-.136-.465-.121-.338-.197-.645-.261-.952a3.38 3.38 0 01-.07-.67 3.04 3.04 0 01.04-.508c.02-.135.054-.266.068-.4.014-.134.022-.268.022-.4 0-.534-.115-1.027-.244-1.461-.087-.3-.152-.597-.205-.891a6.058 6.058 0 01-.09-.87c-.003-.3.012-.598.043-.863.037-.405.028-.788-.04-1.157-.042-.235-.1-.465-.168-.68-.22-.688-.492-1.372-.62-2.057-.082-.398-.104-.789-.077-1.175.05-.534.1-1.127.177-1.59.067-.398.144-.69.237-.865A.588.588 0 0012.504 0" />
+        <path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.368 1.884 1.368.199 0 .394-.048.581-.133.525-.249.786-.735.786-1.348 0-.199-.013-.4-.04-.6-.068-.328-.134-.643-.127-.958.008-.307.048-.598.126-.872.1-.342.127-.588.127-.883-.003-.2-.012-.394-.036-.6a3.58 3.58 0 00-.32-1.1c-.145-.28-.3-.537-.458-.767-.093-.136-.178-.27-.253-.39a6.723 6.723 0 01-.336-.72c-.106-.266-.164-.528-.164-.796 0-.263.058-.527.17-.79.113-.267.178-.55.219-.834.023-.16.008-.325-.032-.486-.04-.16-.08-.319-.136-.465-.121-.338-.197-.645-.261-.952a3.38 3.38 0 01-.07-.67 3.04 3.04 0 01.04-.508c.02-.135.054-.266.068-.4.014-.134.022-.268.022-.4 0-.534-.115-1.027-.244-1.461-.087-.3-.152-.597-.205-.891a6.058 6.058 0 01-.09-.87c-.003-.3.012-.598.043-.863.037-.405.028-.788-.04-1.157-.042-.235-.1-.465-.168-.68-.22-.688-.492-1.372-.62-2.057-.082-.398-.104-.789-.077-1.175.05-.534.1-1.127.177-1.59.067-.398.144-.69.237-.865A.588.588 0 0012.504 0" fill="#333" />
+    </svg>
+);
+
+const NetworkIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="5" r="2.5" />
+        <circle cx="5" cy="19" r="2.5" />
+        <circle cx="19" cy="19" r="2.5" />
+        <path d="M12 7.5V12M12 12L5.5 16.8M12 12l6.5 4.8" />
+    </svg>
+);
+
+const ShieldIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="#f87171" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2l8 4v5c0 5.25-3.5 9.74-8 11-4.5-1.26-8-5.75-8-11V6l8-4z" />
+        <path d="M9 12l2 2 4-4" />
+    </svg>
+);
+
+const HackTheBoxIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#9FEF00">
+        <path d="M11.996 0a.857.857 0 00-.425.119L1.488 5.94a.857.857 0 00-.424.74v11.64c0 .305.162.588.424.74l10.083 5.821a.857.857 0 00.854 0l10.087-5.822a.857.857 0 00.424-.74V6.68a.857.857 0 00-.424-.74L12.425.119A.857.857 0 0011.996 0zm.004 2.16l8.37 4.833v9.614l-8.37 4.833-8.37-4.833V6.993l8.37-4.833zm0 2.88L7.2 8.04v6l4.8 2.76 4.8-2.76v-6l-4.8-3z" />
+    </svg>
+);
+
+const PAMIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8" fill="none" stroke="#fbbf24" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="3" y="11" width="18" height="10" rx="2" />
+        <circle cx="12" cy="16" r="1.5" />
+        <path d="M12 17.5v2" />
+        <path d="M7 11V7a5 5 0 0110 0v4" />
+    </svg>
+);
+
+const FigmaIcon = () => (
+    <svg viewBox="0 0 24 24" className="w-8 h-8">
+        <path d="M8 24c2.208 0 4-1.792 4-4v-4H8c-2.208 0-4 1.792-4 4s1.792 4 4 4z" fill="#0ACF83" />
+        <path d="M4 12c0-2.208 1.792-4 4-4h4v8H8c-2.208 0-4-1.792-4-4z" fill="#A259FF" />
+        <path d="M4 4c0-2.208 1.792-4 4-4h4v8H8C5.792 8 4 6.208 4 4z" fill="#F24E1E" />
+        <path d="M12 0h4c2.208 0 4 1.792 4 4s-1.792 4-4 4h-4V0z" fill="#FF7262" />
+        <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="#1ABCFE" />
+    </svg>
+);
+
+// --- Skill data ---
+
+type Skill = { name: string; icon: ReactNode };
+type Category = { title: string; skills: Skill[] };
+
+const skillCategories: Category[] = [
+    {
+        title: "Front-end & Design",
+        skills: [
+            { name: "React", icon: <ReactIcon /> },
+            { name: "Vue.js", icon: <VueIcon /> },
+            { name: "TypeScript", icon: <TypeScriptIcon /> },
+            { name: "Figma", icon: <FigmaIcon /> },
+        ],
+    },
+    {
+        title: "Back-end",
+        skills: [
+            { name: "C#", icon: <CSharpIcon /> },
+            { name: ".NET", icon: <DotNetIcon /> },
+            { name: "PHP", icon: <PHPIcon /> },
+            { name: "Laravel", icon: <LaravelIcon /> },
+            { name: "Java", icon: <JavaIcon /> },
+        ],
+    },
+    {
+        title: "DevOps & Réseau",
+        skills: [
+            { name: "Docker", icon: <DockerIcon /> },
+            { name: "Git", icon: <GitIcon /> },
+            { name: "Linux", icon: <LinuxIcon /> },
+            { name: "Réseau", icon: <NetworkIcon /> },
+        ],
+    },
+    {
+        title: "Cybersécurité",
+        skills: [
+            { name: "HackTheBox", icon: <HackTheBoxIcon /> },
+            { name: "PAM", icon: <PAMIcon /> },
+            { name: "Sécurité", icon: <ShieldIcon /> },
+        ],
+    },
+];
+
+const container = {
+    hidden: {},
+    visible: {
+        transition: { staggerChildren: 0.1 },
+    },
+};
+
+const item = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 export default function Skills() {
     return (
-        <section>
-            <h3 className="text-2xl mb-3 font-semibold">Présentation</h3>
-            <section  className="flex gap-3 flex-wrap justify-between">
-            <article className="mb-4">
-                <h4>Front-end</h4>
-                <div className="flex gap-2">
-                    {/*<img src="/assets/javascript-logo.png" alt="JavaScript Logo" className="w-16"/>*/}
-                    <img src="/assets/VueJs.png" alt="Vue.js logo" className="w-16"/>
-                    <img src="/assets/Tailwind.png" alt="Tailwind logo" className="w-16"/>
-                    <img src="/assets/react.svg" alt="React logo" className="w-16"/>
-                    {/*<img src="/assets/typescript.png" alt="TypeScript Logo" className="w-16"/>*/}
-                </div>
-            </article>
-            <article className="mb-4">
-                <h4>Back-end</h4>
-                <div className="flex gap-2">
-                    {/*<img src="/assets/PHP.png" alt="PHP logo" className="w-16"/>*/}
-                    <img src="/assets/mysql.png" alt="SQL logo" className="w-16"/>
-                    <img src="/assets/Laravel.png" alt="Laravel logo" className="w-16"/>
-                    <img src="/assets/NodeJs.png" alt="NodeJs logo" className="w-16"/>
-                </div>
-            </article>
-            <article className="mb-4">
-                <h4>Dev Ops</h4>
-                <div className="flex gap-2">
-                    <img src="/assets/Docker.png" alt="Docker logo" className="w-16"/>
-                    <img src="/assets/Linux.png" alt="Linux logo" className="w-16"/>
-                </div>
-            </article>
-            <article>
-                <h4>Designer - UI/UX</h4>
-                <div className="flex gap-2">
-                    {/*<img src="/assets/Canva.webp" alt="Canva logo" className="w-16"/>*/}
-                    <img src="/assets/Figma.png" alt="Figma logo" className="w-16"/>
-                    <img src="/assets/Looping.png" alt="Looping logo" className="w-16"/>
-                </div>
-            </article>
-            </section>
+        <section className="py-24 px-6">
+            <div className="max-w-5xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="mb-12"
+                >
+                    <p className="text-violet-400 font-medium tracking-widest uppercase text-sm mb-2">Compétences</p>
+                    <h2 className="text-3xl md:text-4xl font-bold">Ma stack technique</h2>
+                </motion.div>
+
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                >
+                    {skillCategories.map((category) => (
+                        <motion.div
+                            key={category.title}
+                            variants={item}
+                            className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-violet-500/30 transition-all duration-300 group"
+                        >
+                            <h4 className="text-sm font-semibold text-violet-400 uppercase tracking-wider mb-5">
+                                {category.title}
+                            </h4>
+                            <div className="flex flex-wrap gap-4">
+                                {category.skills.map((skill) => (
+                                    <motion.div
+                                        key={skill.name}
+                                        whileHover={{ scale: 1.15, rotate: 3 }}
+                                        className="flex flex-col items-center gap-2"
+                                    >
+                                        <div className="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/15 transition-colors">
+                                            {skill.icon}
+                                        </div>
+                                        <span className="text-xs text-gray-400">{skill.name}</span>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
         </section>
-    )
+    );
 }
