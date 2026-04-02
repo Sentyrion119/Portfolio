@@ -4,7 +4,6 @@ export default function AboutMe() {
     return (
         <section className="min-h-screen flex items-center justify-center px-6">
             <div className="max-w-5xl mx-auto pt-24">
-                {/* Hero heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -33,7 +32,6 @@ export default function AboutMe() {
                     </motion.p>
                 </motion.div>
 
-                {/* About section */}
                 <motion.div
                     initial={{ opacity: 0, y: 60 }}
                     whileInView={{ opacity: 1, y: 0 }}

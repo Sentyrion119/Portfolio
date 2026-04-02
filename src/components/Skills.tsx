@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 
-// --- SVG Icons ---
-
 const ReactIcon = () => (
     <svg viewBox="0 0 24 24" className="w-8 h-8" fill="#61DAFB">
         <circle cx="12" cy="12" r="2.2" />
@@ -124,8 +122,6 @@ const FigmaIcon = () => (
         <path d="M20 12c0 2.208-1.792 4-4 4s-4-1.792-4-4 1.792-4 4-4 4 1.792 4 4z" fill="#1ABCFE" />
     </svg>
 );
-
-// --- Skill data ---
 
 type Skill = { name: string; icon: ReactNode };
 type Category = { title: string; skills: Skill[] };

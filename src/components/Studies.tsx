@@ -41,7 +41,6 @@ export default function Studies() {
                 </motion.div>
 
                 <div className="relative">
-                    {/* Timeline line */}
                     <div className="absolute left-[19px] top-2 bottom-2 w-px bg-gradient-to-b from-violet-500 via-violet-500/50 to-transparent" />
 
                     <div className="space-y-12">
@@ -54,7 +53,6 @@ export default function Studies() {
                                 viewport={{ once: true }}
                                 className="relative pl-14"
                             >
-                                {/* Timeline dot */}
                                 <div
                                     className={`absolute left-2.5 top-1.5 w-4 h-4 rounded-full border-2 ${
                                         exp.current

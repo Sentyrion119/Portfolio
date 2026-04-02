@@ -13,7 +13,6 @@ export default function Contact() {
 
     return (
         <footer className="relative overflow-hidden">
-            {/* Gradient background */}
             <div className="absolute inset-0 bg-gradient-to-b from-dark via-violet-950/20 to-dark" />
 
             <div className="relative z-10 py-20 px-6">

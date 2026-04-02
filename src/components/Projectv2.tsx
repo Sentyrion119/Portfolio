@@ -109,7 +109,6 @@ export default function Projectv2() {
                             onClick={() => setSelectedProject(project)}
                             className="group cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-violet-500/40 transition-all duration-300"
                         >
-                            {/* Image */}
                             <div className="relative h-48 overflow-hidden">
                                 <img
                                     src={project.mainImage}
@@ -119,7 +118,6 @@ export default function Projectv2() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent" />
                             </div>
 
-                            {/* Content */}
                             <div className="p-5">
                                 <h4 className="text-lg font-bold mb-2 group-hover:text-violet-400 transition-colors">
                                     {project.title}
@@ -143,7 +141,6 @@ export default function Projectv2() {
                 </motion.div>
             </div>
 
-            {/* Modal */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
@@ -161,7 +158,6 @@ export default function Projectv2() {
                             className="bg-[#141414] border border-white/10 rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto relative"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {/* Close button */}
                             <button
                                 className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors z-10"
                                 onClick={() => setSelectedProject(null)}
@@ -169,7 +165,6 @@ export default function Projectv2() {
                                 <span className="text-xl leading-none">&times;</span>
                             </button>
 
-                            {/* Image gallery */}
                             <div className="flex gap-3 overflow-x-auto p-6 pb-0">
                                 {selectedProject.images.map((img, idx) => (
                                     <img
@@ -181,7 +176,6 @@ export default function Projectv2() {
                                 ))}
                             </div>
 
-                            {/* Content */}
                             <div className="p-6">
                                 <h4 className="text-2xl font-bold mb-3">{selectedProject.title}</h4>
                                 <p className="text-gray-300 mb-5 leading-relaxed">{selectedProject.description}</p>
