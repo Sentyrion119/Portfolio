@@ -55,7 +55,7 @@ export default function Contact() {
                     <motion.a
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        href="/assets/SOURDIS_RAPHAËL_Orygin.pdf"
+                        href="/assets/CV_SOURDIS_RAPHAEL_NEW.pdf"
                         download="Raphael Sourdis CV"
                         className="inline-block px-8 py-3 border border-violet-500/30 hover:bg-violet-500/10 rounded-xl font-medium text-violet-300 transition-colors"
                     >

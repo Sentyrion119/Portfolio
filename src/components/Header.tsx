@@ -18,7 +18,7 @@ export default function Header() {
     };
 
     const navLinks = [
-        { label: "Mon CV", href: "/assets/SOURDIS_RAPHAËL_Orygin.pdf", download: true },
+        { label: "Mon CV", href: "/assets/CV_SOURDIS_RAPHAEL_NEW.pdf", download: true },
         { label: "Projets", onClick: () => scrollToSection("projects") },
         { label: "Parcours", onClick: () => scrollToSection("experience") },
         { label: "GitHub", href: "https://github.com/Sentyrion119", external: true },
