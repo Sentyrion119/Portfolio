@@ -62,7 +62,7 @@ export default function AboutMe() {
                             <p>
                                 Bonjour, je m'appelle <span className="text-white font-semibold">Raphaël Sourdis</span>,
                                 développeur Full Stack attentif à la performance et à la qualité des applications web.
-                                Actuellement en Pré MSc chez <span className="text-violet-400 font-medium">Epitech</span>.
+                                En Pré MSc chez <span className="text-violet-400 font-medium">Epitech</span>.
                             </p>
                             <p>
                                 Actuellement à la recherche d'une alternance afin de participer à des projets concrets
